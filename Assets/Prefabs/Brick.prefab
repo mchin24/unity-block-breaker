@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6336783510725182852}
   - component: {fileID: -1903816072146760379}
   m_Layer: 0
-  m_Name: greenbrick_03
+  m_Name: Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
