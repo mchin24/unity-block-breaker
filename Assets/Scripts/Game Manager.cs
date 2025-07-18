@@ -13,15 +13,15 @@ public enum GameState
 [RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
-    public AudioClip StartSound;
-    public AudioClip FailedSound;
-    private GameState currentState = GameState.NotStarted;
-    private Brick[] allBricks;
-    private Ball[] allBalls;
-    private Paddle paddle;
-    private float Timer = 0.0f;
-    private int minutes;
-    private int seconds;
+    public AudioClip startSound;
+    public AudioClip failedSound;
+    private GameState _currentState = GameState.NotStarted;
+    private Brick[] _allBricks;
+    private Ball[] _allBalls;
+    private Paddle _paddle;
+    private float _timer = 0.0f;
+    private int _minutes;
+    private int _seconds;
     public string formattedTime;
     
     // Start is called before the first frame update
