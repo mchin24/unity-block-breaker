@@ -10,14 +10,15 @@ Assets/Plugins/Editor/JetBrains*
 
 
 ### Unity ###
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
+[Ll]ibrary/*
+[Tt]emp/*
+[Oo]bj/*
+[Bb]uild/*
+[Bb]uilds/*
 Assets/AssetStoreTools*
+[Ll]ogs/*
 # Unity local user project setting
-UserSettings/
+UserSettings/*
 
 # Visual Studio cache directory
 .vs/
