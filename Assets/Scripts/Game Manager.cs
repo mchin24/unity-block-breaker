@@ -27,12 +27,85 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         
+        _allBricks = FindObjectsOfType(typeof(Brick)) as Brick[];
+        _allBalls = FindObjectsOfType(typeof(Ball)) as Ball[];
+
+        _paddle = FindObjectOfType<Paddle>();
+        
+        print("Bricks: " + _allBricks.Length);
+        print("Balls: " + _allBalls.Length);
+        print("Paddle: " + _paddle);
+        
+        SwitchState(GameState.NotStarted);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch (_currentState)
+        {
+            case GameState.NotStarted:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    SwitchState(GameState.Playing);
+                }
+                break;
+            case GameState.Playing:
+            {
+                _timer += Time.deltaTime;
+                _minutes = (int)(_timer / 60);
+                _seconds = (int)(_timer - _minutes * 60);
+                formattedTime = string.Format("{0:00}:{1:00}", _minutes, _seconds);
+                
+                print(formattedTime);
+
+                bool allBlocksDestroyed = false;
+
+                if (FindObjectOfType(typeof(Ball)) == null)
+                {
+                    SwitchState(GameState.Failed);
+                }
+
+                if (FindObjectsOfType(typeof(Brick)) == null)
+                {
+                    allBlocksDestroyed = true;
+                    SwitchState(GameState.Completed);
+                }
+            }
+                break;
+            case GameState.Failed:
+                break;
+            case GameState.Completed:
+                bool allBlocksDestroyedFinal = false;
+                Ball[] others = FindObjectsOfType(typeof(Ball)) as Ball[];
+                foreach (Ball other in others)
+                {
+                    Destroy(other.gameObject);
+                }
+                break;
+        }
+    }
+
+    public void SwitchState(GameState newState)
+    {
+        _currentState = newState;
+
+        switch (_currentState)
+        {
+            default:
+            case GameState.NotStarted:
+                    break;
+            case GameState.Playing:
+                //GetComponent<AudioSource>().PlayOneShot(startSound);
+                break;
+            case GameState.Completed:
+                //GetComponent<AudioSource>().PlayOneShot(startSound);
+                break;
+            case GameState.Failed:
+                //GetComponent<AudioSource>().PlayOneShot(failedSound);
+                break;
+        }
     }
 }
