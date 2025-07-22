@@ -2146,8 +2146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0befa29d50b3c4ead140eddfcb83b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSound: {fileID: 0}
-  failedSound: {fileID: 0}
+  startSound: {fileID: 8300000, guid: 78f5930753c1d1044a6f2934c1572b78, type: 3}
+  failedSound: {fileID: 8300000, guid: 4f4965c2e89307a4abcdd3b8d512380e, type: 3}
   formattedTime: 
 --- !u!82 &2041113353
 AudioSource:

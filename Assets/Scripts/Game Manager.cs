@@ -106,13 +106,13 @@ public class GameManager : MonoBehaviour
             case GameState.NotStarted:
                 break;
             case GameState.Playing:
-                //GetComponent<AudioSource>().PlayOneShot(startSound);
+                GetComponent<AudioSource>().PlayOneShot(startSound);
                 break;
             case GameState.Completed:
-                //GetComponent<AudioSource>().PlayOneShot(startSound);
+                GetComponent<AudioSource>().PlayOneShot(startSound);
                 break;
             case GameState.Failed:
-                //GetComponent<AudioSource>().PlayOneShot(failedSound);
+                GetComponent<AudioSource>().PlayOneShot(failedSound);
                 break;
         }
     }
