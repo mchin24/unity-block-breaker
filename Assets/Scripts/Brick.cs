@@ -1,16 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 public class Brick : MonoBehaviour
 {
     public int maxHits;
     public int timesHit = 0;
+    private bool _isDestroyed = false;
+
+    public AudioClip HitSound;
+    public float PitchStep;
+    public float MaxPitch;
+
+    public static float pitch = 1;
+
+    public bool FallDown = false;
+
+    [HideInInspector] public bool isDestroyed = false;
+
+    private Vector2 _velocity = Vector2.Zero;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        timesHit = 0;
     }
 
     // Update is called once per frame
