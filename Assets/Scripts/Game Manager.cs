@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         print("Paddle: " + _paddle);
 
         _text = FindAnyObjectByType<TMP_Text>();
-        _text.text = "Click to begin";
+        ChangeText("Click to begin");
         
         SwitchState(GameState.NotStarted);
     }
@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
         switch (_currentState)
         {
             case GameState.NotStarted:
+                ChangeText("Click to begin");
                 if (Input.GetMouseButtonDown(0))
                 {
                     SwitchState(GameState.Playing);
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
                 _seconds = (int)(_timer - _minutes * 60);
                 formattedTime = string.Format("{0:00}:{1:00}", _minutes, _seconds);
                 
-                print(formattedTime);
+                ChangeText("Time: " + formattedTime);
 
                 bool allBlocksDestroyed = false;
 
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
             }
                 break;
             case GameState.Failed:
+                ChangeText("You Lose!");
                 break;
             case GameState.Completed:
                 bool allBlocksDestroyedFinal = false;
@@ -102,7 +104,7 @@ public class GameManager : MonoBehaviour
         {
             default:
             case GameState.NotStarted:
-                    break;
+                break;
             case GameState.Playing:
                 //GetComponent<AudioSource>().PlayOneShot(startSound);
                 break;
@@ -113,5 +115,10 @@ public class GameManager : MonoBehaviour
                 //GetComponent<AudioSource>().PlayOneShot(failedSound);
                 break;
         }
+    }
+
+    public void ChangeText(string text)
+    {
+        _text.text = text;
     }
 }
