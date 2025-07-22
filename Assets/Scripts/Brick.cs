@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -18,7 +19,7 @@ public class Brick : MonoBehaviour
 
     public bool FallDown = false;
 
-    [HideInInspector] public bool isDestroyed = false;
+    [HideInInspector] public bool IsDestroyed = false;
 
     private Vector2 _velocity = Vector2.Zero;
     
@@ -31,7 +32,13 @@ public class Brick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    
+    }
+
+    private void OnBecameInvisible()
+    {
+        IsDestroyed = true;
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
