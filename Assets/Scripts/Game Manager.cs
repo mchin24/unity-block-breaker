@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using TMPro;
 
 public enum GameState
 {
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     private int _minutes;
     private int _seconds;
     public string formattedTime;
+    private TMP_Text _text;
     
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,9 @@ public class GameManager : MonoBehaviour
         print("Bricks: " + _allBricks.Length);
         print("Balls: " + _allBalls.Length);
         print("Paddle: " + _paddle);
+
+        _text = FindAnyObjectByType<TMP_Text>();
+        _text.text = "Click to begin";
         
         SwitchState(GameState.NotStarted);
     }
