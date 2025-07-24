@@ -1,27 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using Vector2 = System.Numerics.Vector2;
+using System.Collections;
 
+[RequireComponent(typeof(AudioSource), typeof(Animation))]
 public class Brick : MonoBehaviour
 {
     public int maxHits;
     public int timesHit = 0;
     private bool _isDestroyed = false;
 
-    public AudioClip HitSound;
-    public float PitchStep;
-    public float MaxPitch;
+    public AudioClip hitSound;
+    public float pitchStep;
+    public float maxPitch;
 
-    public static float pitch = 1;
+    public static float Pitch = 1;
 
-    public bool FallDown = false;
+    public bool fallDown = false;
 
-    [HideInInspector] public bool IsDestroyed = false;
+    [HideInInspector] public bool isDestroyed = false;
 
-    private Vector2 _velocity = Vector2.Zero;
+    private Vector2 _velocity = Vector2.zero;
     
     // Start is called before the first frame update
     void Start()
@@ -32,21 +29,53 @@ public class Brick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
+        if (fallDown && _velocity != Vector2.zero)
+        {
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+            pos += _velocity * Time.deltaTime;
+        }
     }
 
     private void OnBecameInvisible()
     {
-        IsDestroyed = true;
+        isDestroyed = true;
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator OnCollisionExit2D(Collision2D collision)
     {
         timesHit++;
         if (timesHit >= maxHits)
         {
-            Destroy(gameObject);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Animation>().Play();
+            
+            yield return new WaitForSeconds(GetComponent<Animation>()["Woggle"].length);
+
+            if (fallDown)
+            {
+                _velocity = new Vector2(0, Random.Range(1, 12.0f) * -1);
+            }
+            else
+            {
+                GetComponent<Renderer>().enabled = false;
+            }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        timesHit++;
+        Pitch += pitchStep;
+
+        if (Pitch > maxPitch)
+        {
+            Pitch = 1;
+        }
+
+        GetComponent<AudioSource>().pitch = Pitch;
+        GetComponent<AudioSource>().PlayOneShot(hitSound);
+        
+        StartCoroutine(OnCollisionExit2D(other));
     }
 }
