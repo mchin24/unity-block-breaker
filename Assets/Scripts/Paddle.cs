@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Paddle : MonoBehaviour
 {
     public int i = 0;
+    public AudioClip sound;
     private BoxCollider backgroundCollider;
     
     // Start is called before the first frame update
@@ -25,17 +27,20 @@ public class Paddle : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Rigidbody2D collision_rb = collision.gameObject.GetComponent<Rigidbody2D>(); 
+        GetComponent<AudioSource>().pitch = Time.timeScale;
+        GetComponent<AudioSource>().PlayOneShot(sound);
+        
+        Rigidbody2D collisionRb = collision.gameObject.GetComponent<Rigidbody2D>(); 
         
         // If the ball hits the left side of the paddle but was travelling to the right, send it back left
-        if (collision.transform.position.x < transform.position.x && collision_rb.velocity.x > 0)
+        if (collision.transform.position.x < transform.position.x && collisionRb.velocity.x > 0)
         {
-            collision_rb.velocity = new Vector2(-collision_rb.velocity.x, 10f);
+            collisionRb.velocity = new Vector2(-collisionRb.velocity.x, 10f);
         }
         // If the ball hits the right side of the paddle but was travelling to the left, send it back right
-        else if (collision.transform.position.x > transform.position.x && collision_rb.velocity.x < 0)
+        else if (collision.transform.position.x > transform.position.x && collisionRb.velocity.x < 0)
         {
-            collision_rb.velocity = new Vector2(-collision_rb.velocity.x, 10f);
+            collisionRb.velocity = new Vector2(-collisionRb.velocity.x, 10f);
         }
         
     }
