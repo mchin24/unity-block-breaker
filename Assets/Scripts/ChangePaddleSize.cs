@@ -14,7 +14,7 @@ public class ChangePaddleSize : BasePowerUp
         print("Changing paddle size");
         
         Paddle p = FindObjectOfType<Paddle>();
-        p.transform.localScale = sizeIncrease;
+        p.transform.localScale += sizeIncrease;
         
         Vector3 size = p.transform.localScale;
         if (size.x < minPaddleSize.x)
