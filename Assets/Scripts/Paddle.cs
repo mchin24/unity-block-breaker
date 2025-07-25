@@ -31,17 +31,5 @@ public class Paddle : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(sound);
         
         Rigidbody2D collisionRb = collision.gameObject.GetComponent<Rigidbody2D>(); 
-        
-        // If the ball hits the left side of the paddle but was travelling to the right, send it back left
-        if (collision.transform.position.x < transform.position.x && collisionRb.velocity.x > 0)
-        {
-            collisionRb.velocity = new Vector2(-collisionRb.velocity.x, 10f);
-        }
-        // If the ball hits the right side of the paddle but was travelling to the left, send it back right
-        else if (collision.transform.position.x > transform.position.x && collisionRb.velocity.x < 0)
-        {
-            collisionRb.velocity = new Vector2(-collisionRb.velocity.x, 10f);
-        }
-        
     }
 }

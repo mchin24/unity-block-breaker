@@ -8,6 +8,11 @@ public class Ball : MonoBehaviour
     public bool gameStarted = false;
     private Vector3 paddleVector;
     private Rigidbody2D rb;
+
+    public float minSpeed = 10;
+    public float maxSpeed = 20;
+
+    public float minVerticalMovement = 0.5f;
     
     // Start is called before the first frame update
     void Start()
@@ -26,8 +31,31 @@ public class Ball : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 gameStarted = true;
-                rb.velocity = new Vector2(2f, 10f);
+                rb.velocity = new Vector2(Random.Range(-2.0f, 2.0f), 10f);
             }
+        }
+
+        launchBall();
+    }
+
+    public void launchBall()
+    {
+        Vector2 direction = rb.velocity;
+        float speed = direction.magnitude;
+        direction.Normalize();
+
+        if (direction.x > -minVerticalMovement && direction.x < minVerticalMovement)
+        {
+            direction.x = direction.x < 0 ? -minVerticalMovement : minVerticalMovement;
+            direction.y = direction.y < 0 ? -1 + minVerticalMovement : 1 - minVerticalMovement;
+            
+            rb.velocity = direction * speed;
+        }
+
+        if (speed < minSpeed || speed > maxSpeed)
+        {
+            speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
+            rb.velocity = direction * speed;
         }
     }
 }
