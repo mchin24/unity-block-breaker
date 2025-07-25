@@ -247,7 +247,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.56, y: 1.32}
+    oldSize: {x: 0.96, y: 0.28}
     newSize: {x: 4.56, y: 1.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -269,6 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropSpeed: 2
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 653ea476cca92f64388670a5e7b65a47, type: 3}
   sizeIncrease: {x: -0.7, y: -0.1, z: 0}
   minPaddleSize: {x: 0.1, y: 0.1, z: 0.4}
