@@ -18,6 +18,7 @@ public class BasePowerUp : MonoBehaviour
     {
         if (collision.name == "Paddle")
         {
+            print("Power up collected");
             OnPickup();
             
             GetComponent<Collider2D>().enabled = false;

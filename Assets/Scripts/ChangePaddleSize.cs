@@ -11,6 +11,8 @@ public class ChangePaddleSize : BasePowerUp
     {
         base.OnPickup();
         
+        print("Changing paddle size");
+        
         Paddle p = FindObjectOfType<Paddle>();
         p.transform.localScale = sizeIncrease;
         
