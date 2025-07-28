@@ -7,7 +7,6 @@ public class LevelLoader : MonoBehaviour
 {
     public void LoadScene(int level)
     {
-        string[] scenes = new []{"Intro", "Main"};
-        SceneManager.LoadScene(scenes[level]);
+        SceneManager.LoadScene(level);
     } 
 }
