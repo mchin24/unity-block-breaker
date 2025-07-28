@@ -3010,10 +3010,10 @@ RectTransform:
   m_LocalScale: {x: 0.021981483, y: 0.021981483, z: 0.021981483}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 646645077}
   - {fileID: 86915728}
   - {fileID: 784728029}
   - {fileID: 1514421783}
-  - {fileID: 646645077}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3527,6 +3527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b00289972c35d4b9c2b26b3c9aa2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
+  extras: []
 --- !u!1001 &1390615421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4793,6 +4795,9 @@ MonoBehaviour:
   startSound: {fileID: 8300000, guid: 78f5930753c1d1044a6f2934c1572b78, type: 3}
   failedSound: {fileID: 8300000, guid: 4f4965c2e89307a4abcdd3b8d512380e, type: 3}
   formattedTime: 
+  restartButton: {fileID: 784728028}
+  mainButton: {fileID: 1514421782}
+  buttonBackground: {fileID: 646645076}
 --- !u!82 &2041113353
 AudioSource:
   m_ObjectHideFlags: 0

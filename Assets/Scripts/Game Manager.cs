@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     private int _seconds;
     public string formattedTime;
     private TMP_Text _text;
+
+    public GameObject restartButton;
+    public GameObject mainButton;
+    public GameObject buttonBackground;
     
     // Start is called before the first frame update
     void Start()
@@ -93,6 +97,13 @@ public class GameManager : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void EnableButtons()
+    {
+        restartButton.SetActive(true);
+        mainButton.SetActive(true);
+        buttonBackground.SetActive(true);
     }
 
     public void SwitchState(GameState newState)
