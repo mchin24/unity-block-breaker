@@ -5,8 +5,10 @@ using System.Collections;
 public class Brick : MonoBehaviour
 {
     public int maxHits;
-    public int timesHit = 0;
-    private bool _isDestroyed = false;
+    public int timesHit;
+    private Collider2D _collider2D;
+    private AudioSource _audioSource;
+    private Renderer _renderer;
 
     public AudioClip hitSound;
     public float pitchStep;
@@ -24,6 +26,9 @@ public class Brick : MonoBehaviour
     void Start()
     {
         timesHit = 0;
+        _collider2D = GetComponent<Collider2D>();
+        _audioSource = GetComponent<AudioSource>();
+        _renderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -32,7 +37,6 @@ public class Brick : MonoBehaviour
         if (fallDown && _velocity != Vector2.zero)
         {
             Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-            pos += _velocity * Time.deltaTime;
         }
     }
 
@@ -47,7 +51,7 @@ public class Brick : MonoBehaviour
         timesHit++;
         if (timesHit >= maxHits)
         {
-            GetComponent<Collider2D>().enabled = false;
+            _collider2D.enabled = false;
             GetComponent<Animation>().Play();
             
             yield return new WaitForSeconds(GetComponent<Animation>()["Woggle"].length);
@@ -58,7 +62,7 @@ public class Brick : MonoBehaviour
             }
             else
             {
-                GetComponent<Renderer>().enabled = false;
+                _renderer.enabled = false;
             }
         }
     }
@@ -73,8 +77,8 @@ public class Brick : MonoBehaviour
             Pitch = 1;
         }
 
-        GetComponent<AudioSource>().pitch = Pitch;
-        GetComponent<AudioSource>().PlayOneShot(hitSound);
+        _audioSource.pitch = Pitch;
+        _audioSource.PlayOneShot(hitSound);
         
         StartCoroutine(OnCollisionExit2D(other));
     }
