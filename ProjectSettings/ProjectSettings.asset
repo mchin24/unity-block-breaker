@@ -790,7 +790,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: unity-block-breaker
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -798,7 +798,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: unity-block-breaker
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: unity-block-breaker
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
