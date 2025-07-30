@@ -791,11 +791,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: unity-block-breaker
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 00bd27169220dd01
   metroApplicationDescription: unity-block-breaker
   wsaImages: {}
   metroTileShortName: unity-block-breaker
