@@ -96,20 +96,29 @@ The CEO gives directives from his office, at the top of a large grey corporate b
 ---
 
 ## 🔊 7. Audio
-- **Music**: (Ambient, chiptune, orchestral?)
+- **Music**:
+  - Different music for each level
+    - A level might have a theme, i.e. Halloween or Christmas
 - **Sound Effects**:
   - Player actions
   - UI
-  - Enemies
+  - Environment
+    - Box breaking
+    - Ball bouncing off walls
+    - Ball bounding off paddle
+    - Pies collected
+    - Pies hitting ground
+    - Pies loaded on truck
+    - Truck closing door, driving away
+    - New truck appearing
 
 ---
 
 ## ⚙️ 8. Technical Design (Optional)
-- **Engine**: (Unity, Godot, Unreal, custom)
+- **Engine**: Unity
 - **Code Architecture**: High-level overview of core systems
 - **Save System**:
-  - Checkpoints?
-  - Persistent world?
+  - Save level completion progress and best stats
 
 ---
 
@@ -117,10 +126,10 @@ The CEO gives directives from his office, at the top of a large grey corporate b
 - **Milestones**:
   - Prototype → Alpha → Beta → Launch
 - **Team Roles**:
-  - Designer: Jane Doe
-  - Programmer: John Dev
-  - Artist: Alex Pixel
-- **Tools**: Trello, GitHub, Figma, FMOD, etc.
+  - Designer: Mike Chin
+  - Programmer: Mike Chin
+  - Artist: Mike Chin?
+- **Tools**: GitHub
 
 ---
 
