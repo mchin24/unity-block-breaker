@@ -3,7 +3,7 @@
 ---
 
 ## 🎯 1. Game Overview
-- **Title**: Pie in the Sky
+- **Title**: Pie Alley
 - **Genre**: Arcade, 2D
 - **Platform(s)**: PC, WebGL, Android, iOS
 - **Target Audience**: Casual gamers
