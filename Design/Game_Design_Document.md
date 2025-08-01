@@ -68,20 +68,28 @@ The CEO gives directives from his office, at the top of a large grey corporate b
 
 ## 👤 5. Characters
 - **Player Character**:
-  - Name, role, abilities
+  - Name: TBD
+  - Role: Break boxes to reveal pies. Collect pies and load shipping trucks
+  - Abilities: See various power-ups
 - **Enemies**:
-  - Types, behavior, difficulty
+  - none?
 - **NPCs**:
-  - Interactions, dialogue roles
+  - CEO: Presents stage challenges
 
 ---
 
 ## 🎨 6. Art & Style
-- **Visual Style**: (Pixel art, 3D cel-shaded, low poly)
+- **Visual Style**: Vector
 - **Mood Board / References**:
   - [Link to references or concepts]
 - **Asset List**:
   - Character sprites
+    - Player character
+    - Pies
+    - Ball
+    - Trucks
+    - CEO
+    - Boxes
   - Backgrounds
   - UI icons
 
