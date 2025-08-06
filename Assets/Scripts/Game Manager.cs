@@ -51,6 +51,18 @@ public class GameManager : MonoBehaviour
         SwitchState(GameState.NotStarted);
     }
 
+    public int UpdateBrickCount()
+    {
+        _allBricks = FindObjectsOfType<Brick>();
+        return GetBrickCount();
+    }
+
+    public int GetBrickCount()
+    {
+        Debug.Log("Bricks: " + _allBricks.Length);
+        return _allBricks.Length;
+    }
+
     // Update is called once per frame
     void Update()
     {

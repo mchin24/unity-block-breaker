@@ -44,6 +44,11 @@ public class Brick : MonoBehaviour
     {
         isDestroyed = true;
         Destroy(gameObject);
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        if (gameManager)
+        {
+            gameManager.UpdateBrickCount();
+        }
     }
 
     private IEnumerator OnCollisionExit2D(Collision2D collision)
