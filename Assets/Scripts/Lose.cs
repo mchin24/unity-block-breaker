@@ -14,13 +14,20 @@ public class Lose : MonoBehaviour
     IEnumerator Pause()
     {
         print("Waiting 2 seconds");
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.Tries--;
         gameManager.SwitchState(GameState.Failed);
-        gameManager.EnableButtons();
-        yield return new WaitForSeconds(2);
+        if (gameManager.Tries == 0)
+        {
+            gameManager.EnableButtons();
+        }
+        else
+        {
+            ball = GameObject.FindObjectOfType<Ball>();
+            ball.gameStarted = false;
+        }
         
-        //ball = GameObject.FindObjectOfType<Ball>();
-        //ball.gameStarted = false;
+        yield return new WaitForSeconds(2);
         
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         print("Done waiting");

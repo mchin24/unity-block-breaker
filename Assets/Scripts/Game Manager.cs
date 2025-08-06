@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private int _seconds;
     public string formattedTime;
     private TMP_Text _text;
+    public int Tries = 3;
 
     public GameObject restartButton;
     public GameObject mainButton;
