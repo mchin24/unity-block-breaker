@@ -9,12 +9,6 @@ public class LevelManager : MonoBehaviour
     public int count = 0;
     private GameManager _gameManager;
     public string finishTime;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
