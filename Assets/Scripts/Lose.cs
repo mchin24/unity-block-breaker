@@ -17,6 +17,8 @@ public class Lose : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         gameManager.Tries--;
         gameManager.SwitchState(GameState.Failed);
+        yield return new WaitForSeconds(2);
+        
         if (gameManager.Tries == 0)
         {
             gameManager.EnableButtons();
@@ -24,10 +26,9 @@ public class Lose : MonoBehaviour
         else
         {
             ball = GameObject.FindObjectOfType<Ball>();
+            gameManager.SwitchState(GameState.NotStarted);
             ball.gameStarted = false;
         }
-        
-        yield return new WaitForSeconds(2);
         
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         print("Done waiting");
