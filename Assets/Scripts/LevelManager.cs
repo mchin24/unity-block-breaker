@@ -6,33 +6,28 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public GameObject[] bricks;
-    public int count = 0;
     private GameManager _gameManager;
     public string finishTime;
 
     // Update is called once per frame
     void Update()
     {
-        bricks = GameObject.FindGameObjectsWithTag("Brick");
-        count = bricks.Length;
-        Debug.Log("Brick count: " + count);
-
-        if (count == 0)
-        {
-            Debug.Log("All bricks are gone");
-            StartCoroutine(Pause());
+        // Check how many bricks we have left. 0 bricks means the player has won.
+        Brick[] bricks = FindObjectsOfType<Brick>();
+        if (bricks.Length == 0)
+        { 
+            StartCoroutine(WinAction());
         }
     }
 
-    IEnumerator Pause()
+    IEnumerator WinAction()
     {
-        _gameManager = GameObject.FindObjectOfType<GameManager>();
+        _gameManager = FindObjectOfType<GameManager>();
         _gameManager.SwitchState(GameState.Completed);
         _gameManager.ChangeText("You Win!");
         finishTime = _gameManager.formattedTime;
         
-        Debug.Log("Total time: " + finishTime);
-        
+        // Wait 3 seconds before reloading the intro screen
         yield return new WaitForSeconds(5);
         
         LoadScene(0);
