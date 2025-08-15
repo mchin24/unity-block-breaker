@@ -24,15 +24,15 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
      showguides="true"
-     inkscape:zoom="0.70910507"
-     inkscape:cx="813.7017"
-     inkscape:cy="477.36226"
+     inkscape:zoom="0.501413"
+     inkscape:cx="903.44685"
+     inkscape:cy="521.52616"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer8">
+     inkscape:current-layer="layer1">
     <sodipodi:guide
        position="50.8,310.03168"
        orientation="-1,0"
@@ -82,6 +82,13 @@
        id="path6-9"
        sodipodi:nodetypes="ccccc"
        inkscape:label="sky" />
+    <rect
+       style="display:inline;fill:#e9c6af;stroke-width:0.264583"
+       id="rect9"
+       width="397.86728"
+       height="191.54619"
+       x="54.878246"
+       y="42.741711" />
     <g
        inkscape:groupmode="layer"
        id="layer3"
@@ -99,7 +106,8 @@
     <g
        inkscape:groupmode="layer"
        id="layer8"
-       inkscape:label="windows">
+       inkscape:label="windows"
+       style="display:none">
       <rect
          style="fill:#00ffff;stroke-width:0.264583"
          id="rect5"
@@ -298,7 +306,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="pies">
+     inkscape:label="pies"
+     style="display:none">
     <g
        inkscape:groupmode="layer"
        id="layer6"
