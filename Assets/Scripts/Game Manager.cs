@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 {
     public AudioClip startSound;
     public AudioClip failedSound;
+    private AudioSource _audioSource;
     private GameState _currentState = GameState.NotStarted;
     private Brick[] _allBricks;
     private Ball[] _allBalls;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         
         _allBricks = FindObjectsOfType(typeof(Brick)) as Brick[];
         _allBalls = FindObjectsOfType(typeof(Ball)) as Ball[];
+        _audioSource = GetComponent<AudioSource>();
 
         _paddle = FindObjectOfType<Paddle>();
         
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
         return GetBrickCount();
     }
 
-    public int GetBrickCount()
+    private int GetBrickCount()
     {
         Debug.Log("Bricks: " + _allBricks.Length);
         return _allBricks.Length;
@@ -119,6 +121,11 @@ public class GameManager : MonoBehaviour
         buttonBackground.SetActive(true);
     }
 
+    public GameState GetGameState()
+    {
+        return _currentState;
+    }
+
     public void SwitchState(GameState newState)
     {
         _currentState = newState;
@@ -129,13 +136,13 @@ public class GameManager : MonoBehaviour
             case GameState.NotStarted:
                 break;
             case GameState.Playing:
-                GetComponent<AudioSource>().PlayOneShot(startSound);
+                _audioSource.PlayOneShot(startSound);
                 break;
             case GameState.Completed:
-                GetComponent<AudioSource>().PlayOneShot(startSound);
+                _audioSource.PlayOneShot(startSound);
                 break;
             case GameState.Failed:
-                GetComponent<AudioSource>().PlayOneShot(failedSound);
+                _audioSource.PlayOneShot(failedSound);
                 break;
         }
     }
