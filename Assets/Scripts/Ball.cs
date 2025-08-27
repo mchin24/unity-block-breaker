@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     private Vector3 paddleVector;
     private Rigidbody2D rb;
     private TrailRenderer _trailRenderer;
+    private GameManager _gameManager;
 
     public float minSpeed = 10;
     public float maxSpeed = 20;
@@ -22,14 +23,16 @@ public class Ball : MonoBehaviour
         paddleVector = new Vector3(0, (GetComponent<CircleCollider2D>().radius) + (paddle.GetComponent<BoxCollider2D>().size.y / 2) , 0);
         rb = GetComponent<Rigidbody2D>();
         _trailRenderer = GetComponent<TrailRenderer>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gameStarted)
+        if (_gameManager.GetGameState() == GameState.NotStarted)
         {
             transform.position = paddle.transform.position + paddleVector;
+            _trailRenderer.enabled = false;
 
             if (Input.GetMouseButtonDown(0))
             {
