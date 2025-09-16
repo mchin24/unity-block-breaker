@@ -30,7 +30,21 @@ public class LevelManager : MonoBehaviour
         // Wait 3 seconds before reloading the intro screen
         yield return new WaitForSeconds(5);
         
-        LoadScene(0);
+        // Is there another level after this?
+        Scene thisScene = SceneManager.GetActiveScene();
+        if (thisScene.buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+        {
+            LoadScene(thisScene.buildIndex + 1);
+        }
+        else
+        {
+            /*
+             * If not, load the first scene, which should be the title page. In the future
+             * we might load a credits scene instead.
+             */
+            
+            LoadScene(0);
+        }
     }
 
     public void LoadScene(int level)
