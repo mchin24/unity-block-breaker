@@ -26,4 +26,9 @@ public class LevelLoader : MonoBehaviour
             Application.Quit();
         }
     }
+
+    public void Restart()
+    {
+        LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
