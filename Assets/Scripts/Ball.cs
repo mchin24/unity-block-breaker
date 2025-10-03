@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 gameStarted = true;
-                rb.velocity = new Vector2(Random.Range(-2.0f, 2.0f), 10f);
+                rb.linearVelocity = new Vector2(Random.Range(-2.0f, 2.0f), 10f);
                 _trailRenderer.enabled = true;
             }
         }
@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour
 
     public void launchBall()
     {
-        Vector2 direction = rb.velocity;
+        Vector2 direction = rb.linearVelocity;
         float speed = direction.magnitude;
         direction.Normalize();
 
@@ -56,13 +56,13 @@ public class Ball : MonoBehaviour
             direction.x = direction.x < 0 ? -minVerticalMovement : minVerticalMovement;
             direction.y = direction.y < 0 ? -1 + minVerticalMovement : 1 - minVerticalMovement;
             
-            rb.velocity = direction * speed;
+            rb.linearVelocity = direction * speed;
         }
 
         if (speed < minSpeed || speed > maxSpeed)
         {
             speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
-            rb.velocity = direction * speed;
+            rb.linearVelocity = direction * speed;
         }
     }
 }

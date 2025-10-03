@@ -27,7 +27,7 @@ public class ExtraBall : BasePowerUp
 
     public void launchBall()
     {
-        Vector2 direction = GetComponent<Rigidbody2D>().velocity;
+        Vector2 direction = GetComponent<Rigidbody2D>().linearVelocity;
 
         float speed = direction.magnitude;
         direction.Normalize();
@@ -37,13 +37,13 @@ public class ExtraBall : BasePowerUp
             direction.x = direction.x < 0 ? -minVerticalMovement : minVerticalMovement;
             direction.y = direction.y < 0 ? -1 + minVerticalMovement : 1 - minVerticalMovement;
             
-            GetComponent<Rigidbody2D>().velocity = direction * speed;
+            GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
         }
 
         if (speed < minSpeed || speed > maxSpeed)
         {
             speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
-            GetComponent<Rigidbody2D>().velocity = direction * speed;
+            GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
         }
     }
 }
