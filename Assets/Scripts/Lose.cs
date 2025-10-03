@@ -14,7 +14,7 @@ public class Lose : MonoBehaviour
     IEnumerator Pause()
     {
         print("Waiting 2 seconds");
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
         gameManager.Tries--;
         gameManager.SwitchState(GameState.Failed);
         yield return new WaitForSeconds(2);
@@ -25,7 +25,7 @@ public class Lose : MonoBehaviour
         }
         else
         {
-            ball = GameObject.FindObjectOfType<Ball>();
+            ball = GameObject.FindAnyObjectByType<Ball>();
             gameManager.SwitchState(GameState.NotStarted);
             ball.gameStarted = false;
         }

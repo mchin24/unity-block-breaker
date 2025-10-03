@@ -44,7 +44,7 @@ public class Brick : MonoBehaviour
     {
         isDestroyed = true;
         Destroy(gameObject);
-        GameManager gameManager = FindObjectOfType<GameManager>();
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
         if (gameManager)
         {
             gameManager.UpdateBrickCount();

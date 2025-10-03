@@ -19,11 +19,11 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Create vector based on ball's radius and paddle's position. Will be used to position ball before launch.
+        // Create vector based on ball's radius and paddle's position. Will be used to position the ball before launch.
         paddleVector = new Vector3(0, (GetComponent<CircleCollider2D>().radius) + (paddle.GetComponent<BoxCollider2D>().size.y / 2) , 0);
         rb = GetComponent<Rigidbody2D>();
         _trailRenderer = GetComponent<TrailRenderer>();
-        _gameManager = FindObjectOfType<GameManager>();
+        _gameManager = FindAnyObjectByType<GameManager>();
     }
 
     // Update is called once per frame

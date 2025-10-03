@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         // Check how many bricks we have left. 0 bricks means the player has won.
-        Brick[] bricks = FindObjectsOfType<Brick>();
+        Brick[] bricks = FindObjectsByType<Brick>(FindObjectsSortMode.None);
         if (bricks.Length == 0)
         { 
             StartCoroutine(WinAction());
@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator WinAction()
     {
-        _gameManager = FindObjectOfType<GameManager>();
+        _gameManager = FindAnyObjectByType<GameManager>();
         _gameManager.SwitchState(GameState.Completed);
         _gameManager.ChangeText("You Win!");
         finishTime = _gameManager.formattedTime;
