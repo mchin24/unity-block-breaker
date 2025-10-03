@@ -28,8 +28,8 @@
      inkscape:document-units="px"
      showguides="true"
      inkscape:zoom="0.501413"
-     inkscape:cx="903.44685"
-     inkscape:cy="521.52616"
+     inkscape:cx="902.44968"
+     inkscape:cy="521.52617"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
@@ -208,7 +208,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer4"
-     inkscape:label="trucks 2">
+     inkscape:label="trucks 2"
+     style="display:none">
     <rect
        style="display:none;fill:#ff0000;stroke-width:0.669707"
        id="rect8-6-9-1"
