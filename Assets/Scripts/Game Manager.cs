@@ -37,11 +37,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         
-        _allBricks = FindObjectsOfType(typeof(Brick)) as Brick[];
-        _allBalls = FindObjectsOfType(typeof(Ball)) as Ball[];
+        _allBricks = FindObjectsByType<Brick>(FindObjectsSortMode.None) as Brick[];
+        _allBalls = FindObjectsByType<Ball>(FindObjectsSortMode.None) as Ball[];
         _audioSource = GetComponent<AudioSource>();
 
-        _paddle = FindObjectOfType<Paddle>();
+        _paddle = FindAnyObjectByType<Paddle>();
         
         print("Bricks: " + _allBricks.Length);
         print("Balls: " + _allBalls.Length);
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     public int UpdateBrickCount()
     {
-        _allBricks = FindObjectsOfType<Brick>();
+        _allBricks = FindObjectsByType<Brick>(FindObjectsSortMode.None);
         return GetBrickCount();
     }
 
@@ -86,16 +86,13 @@ public class GameManager : MonoBehaviour
                 
                 ChangeText("Time: " + formattedTime);
 
-                bool allBlocksDestroyed = false;
-
-                if (FindObjectOfType(typeof(Ball)) == null)
+                if (FindAnyObjectByType(typeof(Ball)) == null)
                 {
                     SwitchState(GameState.Failed);
                 }
 
-                if (FindObjectsOfType(typeof(Brick)) == null)
+                if (FindObjectsByType<Brick>(FindObjectsSortMode.None) == null)
                 {
-                    allBlocksDestroyed = true;
                     SwitchState(GameState.Completed);
                 }
             }
@@ -104,8 +101,7 @@ public class GameManager : MonoBehaviour
                 ChangeText("You Lose!");
                 break;
             case GameState.Completed:
-                bool allBlocksDestroyedFinal = false;
-                Ball[] others = FindObjectsOfType(typeof(Ball)) as Ball[];
+                Ball[] others = FindObjectsByType<Ball>(FindObjectsSortMode.None) as Ball[];
                 foreach (Ball other in others)
                 {
                     Destroy(other.gameObject);

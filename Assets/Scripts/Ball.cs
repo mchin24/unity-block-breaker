@@ -19,11 +19,11 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Create vector based on ball's radius and paddle's position. Will be used to position ball before launch.
+        // Create vector based on ball's radius and paddle's position. Will be used to position the ball before launch.
         paddleVector = new Vector3(0, (GetComponent<CircleCollider2D>().radius) + (paddle.GetComponent<BoxCollider2D>().size.y / 2) , 0);
         rb = GetComponent<Rigidbody2D>();
         _trailRenderer = GetComponent<TrailRenderer>();
-        _gameManager = FindObjectOfType<GameManager>();
+        _gameManager = FindAnyObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 gameStarted = true;
-                rb.velocity = new Vector2(Random.Range(-2.0f, 2.0f), 10f);
+                rb.linearVelocity = new Vector2(Random.Range(-2.0f, 2.0f), 10f);
                 _trailRenderer.enabled = true;
             }
         }
@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour
 
     public void launchBall()
     {
-        Vector2 direction = rb.velocity;
+        Vector2 direction = rb.linearVelocity;
         float speed = direction.magnitude;
         direction.Normalize();
 
@@ -56,13 +56,13 @@ public class Ball : MonoBehaviour
             direction.x = direction.x < 0 ? -minVerticalMovement : minVerticalMovement;
             direction.y = direction.y < 0 ? -1 + minVerticalMovement : 1 - minVerticalMovement;
             
-            rb.velocity = direction * speed;
+            rb.linearVelocity = direction * speed;
         }
 
         if (speed < minSpeed || speed > maxSpeed)
         {
             speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
-            rb.velocity = direction * speed;
+            rb.linearVelocity = direction * speed;
         }
     }
 }

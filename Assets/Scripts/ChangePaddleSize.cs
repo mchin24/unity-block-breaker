@@ -13,7 +13,7 @@ public class ChangePaddleSize : BasePowerUp
         
         print("Changing paddle size");
         
-        Paddle p = FindObjectOfType<Paddle>();
+        Paddle p = FindAnyObjectByType<Paddle>();
         p.transform.localScale += sizeIncrease;
         
         Vector3 size = p.transform.localScale;
